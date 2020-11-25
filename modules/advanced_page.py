@@ -5,4 +5,7 @@ import numpy as np
 def advanced(page):
     '''Advanced Streamlit commands'''
     st.title(page)
+
+    # st.cache 
+    # st.stop()
     return

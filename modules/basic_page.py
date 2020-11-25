@@ -33,8 +33,8 @@ def basic(page):
         a_button = st.button('Hit me')
 
         st.code('''
-a_button = st.button('Hit me')
-if a_button: # if it has been clicked
+button = st.button('Hit me')
+if button: # if it has been clicked
     st.write('TADA!')''')
         if a_button: # if it has been clicked
             st.write('TADA!')
@@ -42,8 +42,8 @@ if a_button: # if it has been clicked
         st.subheader('Checkbox')
         a_checkbox = st.checkbox('Check me out')
         st.code(''' 
-a_checkbox = st.checkbox('Check me out') 
-if a_checkbox: # if clicked
+checkbox = st.checkbox('Check me out') 
+if checkbox: # if clicked
     st.write("I'm awesome!")''')
 
         if a_checkbox: # if clicked    
@@ -55,12 +55,12 @@ if a_checkbox: # if clicked
         radio_selection = st.radio('Radio', ['Option 1',variable,3.14159])
         st.code(''' 
 variable = 12
-radio_selection = st.radio('Radio', ['Option 1',variable,3.14159]) 
-if radio_selection == 'Option 1': 
+radio_select = st.radio('Radio', ['Option 1',variable,3.14159]) 
+if radio_select == 'Option 1': 
     st.write("great choice")
-elif radio_selection == variable:
+elif radio_select == variable:
     st.write("thats a number from a variable")
-elif radio_selection == 3.14159:
+elif radio_select == 3.14159:
     st.write(np.pi)''')
         if radio_selection == 'Option 1': 
             st.write("great choice")
@@ -74,23 +74,23 @@ elif radio_selection == 3.14159:
         slider_value = st.slider('Slide me', min_value=0, max_value=10, value=5)
     
         st.code('''
-slider_value = st.slider('Slide me',  min_value=0, max_value=10, value=5)
-st.write(slider_value)''')
+slider_pick = st.slider('Slide me',  min_value=0, max_value=10, value=5)
+st.write(slider_pick)''')
         st.write(slider_value)
 
         st.markdown('__Double Ended Slider__')
         double_slider = st.slider('A range', 0,100, (10,90))
         st.code('''
-double_slider = st.slider('A range', 0,100, (10,90))
-st.write(double_slider)''')
+dble_slider = st.slider('A range', 0,100, (10,90))
+st.write(dble_slider)''')
         st.write(double_slider)
 
         st.markdown('__Fixed Option Slider__')
         s_slider = st.select_slider('Slide to select', options=[1,'Middle', variable], value = 'Middle')
         st.code('''
-s_slider = st.select_slider('Slide to select', 
+fixed_slider = st.select_slider('Slide to select', 
     options=[1,'Middle', variable],value = 'Middle')
-st.write(s_slider)''')
+st.write(fixed_slider)''')
         st.write(s_slider)
 
         st.subheader('Odds & Ends')
@@ -102,8 +102,8 @@ upload_file = st.file_uploader('File uploader')
 
         st.markdown("__Colour Select__")
         st.code(''' 
-color = st.color_picker('Pick a color')
-st.write(color)''')
+colour = st.color_picker('Pick a color')
+st.write(colour)''')
         color = st.color_picker('Pick a color')
         st.write(color)
 
@@ -114,10 +114,10 @@ st.write(color)''')
         single_select = st.selectbox('Single Select', ['what', 'will', 'you', 'choose?'])
 
         st.code(''' 
-single_select = st.selectbox('Single Select', 
+single_select_box = st.selectbox('Single Select', 
     ['what', 'will', 'you', 'choose?'])
     
-if (single_select == 'what') or (single_select == 'you'): 
+if (single_select_box == 'what') or (single_select_box == 'you'): 
     st.write('You win! :smiley:')
 else: 
     st.write('Winner Winner :chicken: Dinner!)''')
@@ -130,21 +130,21 @@ else:
         st.write('Select 1 or more options from a variety')
         multi_select = st.multiselect('Multi-Select', ['what', 'will', 'you', 'choose?'])
         st.code('''
-multi_select = st.multiselect('Multi-Select', 
+multi_select_box = st.multiselect('Multi-Select', 
     ['what', 'will', 'you', 'choose?'])
-st.write(multi_select)''')
+st.write(multi_select_box)''')
         st.write(multi_select)
 
         st.subheader('Various Input fields')
         st.markdown('__Text Input__')
         st.code('''
 title_limited = "Enter some text: limit to number of characters"
-text_limited = st.text_input(title_limited, 'display text')
-st.write(text_limited)
+text_input_limited = st.text_input(title_limited, 'display text')
+st.write(text_input_limited)
         
 title_unlim = "Area for textual entry: no limit to number of characters"
-text_unlim = st.text_area(title_unlim, "Text to Display")
-st.write(text_unlim) ''')
+text_area_unlim = st.text_area(title_unlim, "Text to Display")
+st.write(text_area_unlim) ''')
 
         title_limited = "Enter some text: limit to number of characters"
         text_limited = st.text_input(title_limited, 'display text')
@@ -156,17 +156,17 @@ st.write(text_unlim) ''')
     
         st.markdown('__Number Input__')
         st.code(''' 
-a_number = st.number_input('Enter a number')
-st.write(a_number)''')
+number = st.number_input('Enter a number')
+st.write(number)''')
         a_number = st.number_input('Enter a number')
         st.write(a_number)
 
         st.markdown('__Date Input__')
         st.write("The date input is automatically the datetime class, default is the current date")
         st.code('''
-a_date = st.date_input('Date input')
-st.write(a_date)
-st.write(type(a_date)) ''')
+date = st.date_input('Date input')
+st.write(date)
+st.write(type(date)) ''')
         a_date = st.date_input('Date input')
         st.write(a_date)
         st.write(type(a_date))
@@ -174,9 +174,9 @@ st.write(type(a_date)) ''')
         st.markdown('__Time Input__')
         st.write("The time input is automatically the datetime class, default is the current time")
         st.code('''
-a_time = st.time_input('Time entry')
-st.write(a_time)
-st.write(type(a_time))''')
+time = st.time_input('Time entry')
+st.write(time)
+st.write(type(time))''')
         a_time = st.time_input('Time entry')
         st.write(a_time)
         st.write(type(a_time))
@@ -346,8 +346,8 @@ To add widgets or functions to the sidebar you simply have to add 'sidebar' befo
 NOTE: the write function is not callable from the sidebar, you mucst use markdown''')
     st.code('''
 # use st.sidebar.<widget> notation
-a = st.sidebar.button("Your button added to the sidebar!")
-if not a:
+sidebar_button = st.sidebar.button("Your button added to the sidebar!")
+if not sidebar_button: # if the button is NOT clicked display this message
     st.sidebar.markdown('You added a widget to the sidebar!')
 
     ''')

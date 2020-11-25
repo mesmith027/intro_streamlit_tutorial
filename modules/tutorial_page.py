@@ -24,7 +24,8 @@ def tutorial(page):
 
     # choose to display any of the pages to see code
     # duplicate widget id NOT fixed, possible solutions: 
-        # create new functions to display basic commands what have unique keys
+        # create new functions to display basic commands what have unique keys??? will allow put in columns 
+        # could add note at the top from people to change their code 
     st.markdown("---")
     st.write('Pick the page you want displayed below to list commands')
     page = st.radio('Navigation', [

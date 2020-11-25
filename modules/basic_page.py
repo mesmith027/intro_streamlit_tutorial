@@ -9,133 +9,6 @@ def basic(page):
     col1, col2 = st.beta_columns(2)
     # start with the basics
 
-    # CREATING TEXT
-    with col1: 
-        st.header('Display text')
-        st.write('There are various ways to display text in Streamlit')
-    
-        st.markdown("---")
-        st.title('A title')
-        st.code("st.title('A title')")
-        st.markdown("---")
-        st.header('A basic header')
-        st.code("st.header('A basic header')")
-
-        st.subheader('My subheader')
-        st.code("st.subheader('My subheader')")
-
-        st.text('Fixed width text command:')
-        st.code("st.text('Fixed width text command:')")
-
-        st.write('The write command, also works when passing most objects:')
-        an_object = ['list', 3.14159,0]
-        st.code('''
-st.write('The write command, also works when passing most objects:')
-st.write(an_object) #this is a list
-         ''')
-        st.write(an_object)
-
-        st.markdown('_Markdown_, __Markdown__:')
-        st.code("st.markdown('_Markdown_, __Markdown__')")
-
-        st.write('LaTeX equations:')
-        st.code("st.latex('e^{i\pi} + 1 = 0')")
-        st.latex('e^{i\pi} + 1 = 0')
-
-    # DISPLAY CODE
-    with col1: 
-        st.header("Display Code")
-        st.text('You can display code using st.code:')
-        st.code(''' 
-st.code('st.write("a line of code")')
-st.code( ' ' '  # use triple quotes to create a block (no spaces)
-st.write("A block of code")
-code_button = st.button('Click Me')
-if code_button: 
-    success!
-' ' ')
-        ''')
-        st.text('this output looks like:')
-        st.code('st.write("a line of code")')
-        st.code( '''  # use triple quotes to create a block (no spaces)
-        st.write("A block of code")
-        code_button = st.button('Click Me')
-        if code_button: 
-            st.text('success!')
-        ''')
-
-        st.write("Another way is with echo:")
-        st.code(''' 
-with st.echo(): # everything after this line will be printed
-    st.text("Code to be executed and printed")
-    echo = st.button("a button")
-            if echo:
-                st.write('__Here you go__')
-        ''')
-        st.write("Here it is in practice:")
-        with st.echo(): # everything after this line will be printed
-            st.text("Code to be executed and printed")
-            echo = st.button("a button")
-            if echo:
-                st.write('__Here you go__')
-            
-    # DISPLAY DATA
-    with col1: 
-        st.header("Display Data")
-        st.subheader("Pandas DataFrame")
-        st.code(''' 
-column_names = ['a','b','c','d','e']
-pandas_data = pd.DataFrame(np.random.randn(50,5), columns=column_names)
-st.dataframe(pandas_data)
-        ''')
-        column_names = ['a','b','c','d','e']
-        pandas_data = pd.DataFrame(np.random.randn(50,5), columns=column_names)
-        st.dataframe(pandas_data)
-    
-        st.write("you can also use the table function:")
-        st.code(''' 
-st.table(pandas_data.iloc[0:10])
-        ''')
-        st.table(pandas_data.iloc[0:10])
-
-        st.subheader('Json data')
-        st.code(''' 
-json_data = {'Dictionary':True ,'Format':342}
-st.json(json_data)''')
-        json_data = {'Dictionary':True ,'Format':342}
-        st.json(json_data)
-
-    # MEDIA
-    with col1: 
-        st.header("Media")
-
-        st.subheader("Image")
-        st.code('''
-st.image('img/MC.png',use_column_width = True)
-        ''')
-        st.image('img/MC.png',use_column_width = True)
-
-        st.subheader("audio file")
-        st.code(''' 
-st.audio('img/audio_example.wav')
-        ''')
-        st.audio('img/audio_example.wav')
-
-        st.subheader("Video")
-        st.code(''' 
-st.video('img/balloon_video.webm')
-        ''')
-        st.video('img/balloon_video.webm')
-
-        st.subheader("Hyperlink")
-        st.write("You can add hyperlinks in by using standard markdown notation")
-        st.code('''
-st.write('[Check this out](https://www.streamlit.io/sharing)')
-st.markdown("[Tweet us!](https://twitter.com/streamlit)") ''')
-
-        st.write('[Check this out](https://www.streamlit.io/sharing)')
-        st.markdown("[Tweet us!](https://twitter.com/streamlit)")
-        
     # WIDGETS
     col2.header('Interactive Widgets')
     col2.write('There are many interactive widgets that you can use to allow the user \
@@ -291,6 +164,134 @@ color = st.color_picker('Pick a color')
 st.write(color)''')
         color = st.color_picker('Pick a color')
         st.write(color)
+
+    # CREATING TEXT
+    with col1: 
+        st.header('Display text')
+        st.write('There are various ways to display text in Streamlit')
+    
+        st.markdown("---")
+        st.title('A title')
+        st.code("st.title('A title')")
+        st.markdown("---")
+        st.header('A basic header')
+        st.code("st.header('A basic header')")
+
+        st.subheader('My subheader')
+        st.code("st.subheader('My subheader')")
+
+        st.text('Fixed width text command:')
+        st.code("st.text('Fixed width text command:')")
+
+        st.write('The write command, also works when passing most objects:')
+        an_object = ['list', 3.14159,0]
+        st.code('''
+st.write('The write command, also works when passing most objects:')
+st.write(an_object) #this is a list
+         ''')
+        st.write(an_object)
+
+        st.markdown('_Markdown_, __Markdown__:')
+        st.code("st.markdown('_Markdown_, __Markdown__')")
+
+        st.write('LaTeX equations:')
+        st.code("st.latex('e^{i\pi} + 1 = 0')")
+        st.latex('e^{i\pi} + 1 = 0')
+
+    # DISPLAY CODE
+    with col1: 
+        st.header("Display Code")
+        st.text('You can display code using st.code:')
+        st.code(''' 
+st.code('st.write("a line of code")')
+st.code( ' ' '  # use triple quotes to create a block (no spaces)
+st.write("A block of code")
+code_button = st.button('Click Me')
+if code_button: 
+    success!
+' ' ')
+        ''')
+        st.text('this output looks like:')
+        st.code('st.write("a line of code")')
+        st.code( '''  # use triple quotes to create a block (no spaces)
+        st.write("A block of code")
+        code_button = st.button('Click Me')
+        if code_button: 
+            st.text('success!')
+        ''')
+
+        st.write("Another way is with echo:")
+        st.code(''' 
+with st.echo(): # everything after this line will be printed
+    st.text("Code to be executed and printed")
+    echo = st.button("a button")
+            if echo:
+                st.write('__Here you go__')
+        ''')
+        st.write("Here it is in practice:")
+        with st.echo(): # everything after this line will be printed
+            st.text("Code to be executed and printed")
+            echo = st.button("a button")
+            if echo:
+                st.write('__Here you go__')
+            
+    # DISPLAY DATA
+    with col1: 
+        st.header("Display Data")
+        st.subheader("Pandas DataFrame")
+        st.code(''' 
+column_names = ['a','b','c','d','e']
+pandas_data = pd.DataFrame(np.random.randn(50,5), columns=column_names)
+st.dataframe(pandas_data)
+        ''')
+        column_names = ['a','b','c','d','e']
+        pandas_data = pd.DataFrame(np.random.randn(50,5), columns=column_names)
+        st.dataframe(pandas_data)
+    
+        st.write("you can also use the table function:")
+        st.code(''' 
+st.table(pandas_data.iloc[0:10])
+        ''')
+        st.table(pandas_data.iloc[0:10])
+
+        st.subheader('Json data')
+        st.code(''' 
+json_data = {'Dictionary':True ,'Format':342}
+st.json(json_data)''')
+        json_data = {'Dictionary':True ,'Format':342}
+        st.json(json_data)
+
+    # MEDIA
+    with col1: 
+        st.header("Media")
+
+        st.subheader("Image")
+        st.code('''
+st.image('img/MC.png',use_column_width = True)
+        ''')
+        st.image('img/MC.png',use_column_width = True)
+
+        st.subheader("audio file")
+        st.code(''' 
+st.audio('img/audio_example.wav')
+        ''')
+        st.audio('img/audio_example.wav')
+
+        st.subheader("Video")
+        st.code(''' 
+st.video('img/balloon_video.webm')
+        ''')
+        st.video('img/balloon_video.webm')
+
+        st.subheader("Hyperlink")
+        st.write("You can add hyperlinks in by using standard markdown notation")
+        st.code('''
+st.write('[Check this out](https://www.streamlit.io/sharing)')
+st.markdown("[Tweet us!](https://twitter.com/streamlit)") ''')
+
+        st.write('[Check this out](https://www.streamlit.io/sharing)')
+        st.markdown("[Tweet us!](https://twitter.com/streamlit)")
+        
     
     # SIDEBAR COMMANDS
     with col2: 

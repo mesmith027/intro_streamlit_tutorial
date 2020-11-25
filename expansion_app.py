@@ -2,11 +2,11 @@ import streamlit as st
 #from streamlit_ace import st_ace
 #import pandas as pd
 #import numpy as np
-from setup_page import setup 
-from basic_page import basic
-from layout_page import layout 
-from advanced_page import advanced
-from tutorial_page import tutorial
+from modules.setup_page import setup 
+from modules.basic_page import basic
+from modules.layout_page import layout 
+from modules.advanced_page import advanced
+from modules.tutorial_page import tutorial
 
 # Run the program
 if __name__ == '__main__':

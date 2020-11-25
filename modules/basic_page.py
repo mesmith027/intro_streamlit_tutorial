@@ -2,63 +2,118 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+def empty_line(num):
+    for x in range(1,num+1):
+        st.write('')
+    return
+
 def basic(page):
     '''Basic streamlit commands'''
     st.title(page)
-
-    col1, col2 = st.beta_columns(2)
+    st.write(''' This page will run you through all the basic Streamlit functions. It will show you the name of 
+    the function, what that function looks like rendered on a Streamlit app, the code to generate the function, 
+    and, if it's something that the user can interact with- like a widget, will allow you to interact with the function
+    so you will be able to directly see how to _use_ that feature to change your app based on user interaction.
+    :smile:''')
+    
     # start with the basics
 
     # WIDGETS
-    col2.header('Interactive Widgets')
-    col2.write('There are many interactive widgets that you can use to allow the user \
-        to interact with your app')
+    st.header('Interactive Widgets')
+    st.write('''Lets start with all the possible widgets that you can put in your app! There are many interactive 
+    widgets that you can use to allow the user to interact with your app.''')
+    
+    # create columns to put all the functions in mid column buffer
+    # for widgets section
+    col1, mid, col2 = st.beta_columns([20,1,20])
 
-    col2.subheader('Button')
-    a_button = col2.button('Hit me')
+    # __________Column 1 in Widgets__________
+    with col1: 
+        st.subheader('Button')
+        a_button = st.button('Hit me')
 
-    col2.code('''
+        st.code('''
 a_button = st.button('Hit me')
 if a_button: # if it has been clicked
     st.write('TADA!')''')
-    if a_button: # if it has been clicked
-        col2.write('TADA!')
+        if a_button: # if it has been clicked
+            st.write('TADA!')
 
-    col2.subheader('Checkbox')
-    a_checkbox = col2.checkbox('Check me out')
-    col2.code(''' 
+        st.subheader('Checkbox')
+        a_checkbox = st.checkbox('Check me out')
+        st.code(''' 
 a_checkbox = st.checkbox('Check me out') 
 if a_checkbox: # if clicked
-    st.write("Check me out I'm awesome!")''')
+    st.write("I'm awesome!")''')
 
-    if a_checkbox: # if clicked    
-        col2.write("Check me out I'm awesome!")
-
-    col2.subheader('Radio Buttons')
-    col2.write('The options for a radio button can be a string, integer, float, or variable')
-    variable = 12
-    radio_selection = col2.radio('Radio', ['Option 1',variable,3.14159])
-    col2.code(''' 
+        if a_checkbox: # if clicked    
+            st.write("I'm awesome!")
+            
+        st.subheader('Radio Buttons')
+        st.write('The options for a radio button can be a string, integer, float, or variable')
+        variable = 12
+        radio_selection = st.radio('Radio', ['Option 1',variable,3.14159])
+        st.code(''' 
 variable = 12
-radio_selection = col2.radio('Radio', ['Option 1',variable,3.14159]) 
+radio_selection = st.radio('Radio', ['Option 1',variable,3.14159]) 
 if radio_selection == 'Option 1': 
     st.write("great choice")
 elif radio_selection == variable:
     st.write("thats a number from a variable")
 elif radio_selection == 3.14159:
     st.write(np.pi)''')
-    if radio_selection == 'Option 1': 
-        col2.write("great choice")
-    elif radio_selection == variable:
-        col2.write("thats a number from a variable")
-    elif radio_selection == 3.14159:
-        col2.write(np.pi)
+        if radio_selection == 'Option 1': 
+            st.write("great choice")
+        elif radio_selection == variable:
+            st.write("thats a number from a variable")
+        elif radio_selection == 3.14159:
+            st.write(np.pi)
+        
+        st.subheader('Sliders')
+        st.markdown('__Single Slider__')
+        slider_value = st.slider('Slide me', min_value=0, max_value=10, value=5)
+    
+        st.code('''
+slider_value = st.slider('Slide me',  min_value=0, max_value=10, value=5)
+st.write(slider_value)''')
+        st.write(slider_value)
 
-    col2.subheader('Selectbox')
-    col2.write('Select 1 option from a variety')
-    single_select = col2.selectbox('Single Select', ['what', 'will', 'you', 'choose?'])
+        st.markdown('__Double Ended Slider__')
+        double_slider = st.slider('A range', 0,100, (10,90))
+        st.code('''
+double_slider = st.slider('A range', 0,100, (10,90))
+st.write(double_slider)''')
+        st.write(double_slider)
 
-    col2.code(''' 
+        st.markdown('__Fixed Option Slider__')
+        s_slider = st.select_slider('Slide to select', options=[1,'Middle', variable], value = 'Middle')
+        st.code('''
+s_slider = st.select_slider('Slide to select', 
+    options=[1,'Middle', variable],value = 'Middle')
+st.write(s_slider)''')
+        st.write(s_slider)
+
+        st.subheader('Odds & Ends')
+        st.markdown("__Upload a file__")
+        st.code(''' 
+upload_file = st.file_uploader('File uploader')
+        ''')
+        upload_file = st.file_uploader('File uploader')
+
+        st.markdown("__Colour Select__")
+        st.code(''' 
+color = st.color_picker('Pick a color')
+st.write(color)''')
+        color = st.color_picker('Pick a color')
+        st.write(color)
+
+    # __________Column 2 in Widgets__________
+    with col2: 
+        st.subheader('Selectbox')
+        st.write('Select 1 option from a variety')
+        single_select = st.selectbox('Single Select', ['what', 'will', 'you', 'choose?'])
+
+        st.code(''' 
 single_select = st.selectbox('Single Select', 
     ['what', 'will', 'you', 'choose?'])
     
@@ -66,62 +121,37 @@ if (single_select == 'what') or (single_select == 'you'):
     st.write('You win! :smiley:')
 else: 
     st.write('Winner Winner :chicken: Dinner!)''')
-    if (single_select == 'what') or (single_select == 'you'): 
-        col2.write('You win! :smiley:')
-    else: 
-        col2.write('Winner Winner :chicken: Dinner!')
+        if (single_select == 'what') or (single_select == 'you'): 
+            st.write('You win! :smiley:')
+        else: 
+            st.write('Winner Winner :chicken: Dinner!')
 
-    col2.subheader('Multi-Select Box')
-    col2.write('Select 1 or more options from a variety')
-    multi_select = col2.multiselect('Multi-Select', ['what', 'will', 'you', 'choose?'])
-    col2.code('''
+        st.subheader('Multi-Select Box')
+        st.write('Select 1 or more options from a variety')
+        multi_select = st.multiselect('Multi-Select', ['what', 'will', 'you', 'choose?'])
+        st.code('''
 multi_select = st.multiselect('Multi-Select', 
     ['what', 'will', 'you', 'choose?'])
 st.write(multi_select)''')
-    col2.write(multi_select)
+        st.write(multi_select)
 
-    col2.subheader('Sliders')
-    col2.markdown('__Single Slider__')
-    slider_value = col2.slider('Slide me', min_value=0, max_value=10, value=5)
-    
-    col2.code('''
-slider_value = st.slider('Slide me',  min_value=0, max_value=10, value=5)
-st.write(slider_value)''')
-    col2.write(slider_value)
-
-    col2.markdown('__Double Ended Slider__')
-    double_slider = col2.slider('A range', 0,100, (10,90))
-    col2.code('''
-double_slider = col2.slider('A range', 0,100, (10,90))
-st.write(double_slider)''')
-    col2.write(double_slider)
-
-    col2.markdown('__Fixed Option Slider__')
-    s_slider = col2.select_slider('Slide to select', options=[1,'Middle', variable], value = 'Middle')
-    col2.code('''
-s_slider = st.select_slider('Slide to select', 
-    options=[1,'Middle', variable],value = 'Middle')
-st.write(s_slider)''')
-    col2.write(s_slider)
-
-    with col2: 
         st.subheader('Various Input fields')
         st.markdown('__Text Input__')
         st.code('''
 title_limited = "Enter some text: limit to number of characters"
-text_limited = col2.text_input(title_limited, 'display text')
+text_limited = st.text_input(title_limited, 'display text')
 st.write(text_limited)
         
 title_unlim = "Area for textual entry: no limit to number of characters"
-text_unlim = col2.text_area(title_unlim, "Text to Display")
+text_unlim = st.text_area(title_unlim, "Text to Display")
 st.write(text_unlim) ''')
 
         title_limited = "Enter some text: limit to number of characters"
-        text_limited = col2.text_input(title_limited, 'display text')
+        text_limited = st.text_input(title_limited, 'display text')
         st.write(text_limited)
 
         title_unlim = "Area for textual entry: no limit to number of characters"
-        text_unlim = col2.text_area(title_unlim, "Text to Display")
+        text_unlim = st.text_area(title_unlim, "Text to Display")
         st.write(text_unlim)
     
         st.markdown('__Number Input__')
@@ -151,38 +181,35 @@ st.write(type(a_time))''')
         st.write(a_time)
         st.write(type(a_time))
 
-        st.subheader('Odds & Ends')
-        st.markdown("__Upload a file__")
-        st.code(''' 
-upload_file = st.file_uploader('File uploader')
-        ''')
-        upload_file = st.file_uploader('File uploader')
-
-        st.markdown("__Colour Select__")
-        st.code(''' 
-color = st.color_picker('Pick a color')
-st.write(color)''')
-        color = st.color_picker('Pick a color')
-        st.write(color)
+# ****************** END OF WIDGETS ******************
 
     # CREATING TEXT
-    with col1: 
-        st.header('Display text')
-        st.write('There are various ways to display text in Streamlit')
-    
-        st.markdown("---")
+    st.header('Display text')
+    st.write('There are various ways to display text in Streamlit')
+
+    text1, mid, text2 = st.beta_columns([20,1,20])
+
+    # __________Column 1 in Text__________
+    with text1: 
+       
         st.title('A title')
         st.code("st.title('A title')")
         st.markdown("---")
+
         st.header('A basic header')
         st.code("st.header('A basic header')")
 
+        st.markdown("---")
         st.subheader('My subheader')
         st.code("st.subheader('My subheader')")
 
-        st.text('Fixed width text command:')
-        st.code("st.text('Fixed width text command:')")
-
+        st.markdown("---")
+        st.markdown('_Markdown_, __Markdown__:')
+        st.code("st.markdown('_Markdown_, __Markdown__')")
+  
+     # __________Column 2 in Text__________
+    with text2: 
+        empty_line(2)
         st.write('The write command, also works when passing most objects:')
         an_object = ['list', 3.14159,0]
         st.code('''
@@ -190,18 +217,26 @@ st.write('The write command, also works when passing most objects:')
 st.write(an_object) #this is a list
          ''')
         st.write(an_object)
-
-        st.markdown('_Markdown_, __Markdown__:')
-        st.code("st.markdown('_Markdown_, __Markdown__')")
-
+        st.markdown("---")
+        
         st.write('LaTeX equations:')
         st.code("st.latex('e^{i\pi} + 1 = 0')")
         st.latex('e^{i\pi} + 1 = 0')
+        st.markdown("---")
 
-    # DISPLAY CODE
-    with col1: 
-        st.header("Display Code")
-        st.text('You can display code using st.code:')
+        st.text('Fixed width text command:')
+        st.code("st.text('Fixed width text command:')")     
+    
+# ****************** END OF TEXT ******************
+
+    # DISPLAY OTHER INFORMATION
+    st.header('Display Other Information')
+    st.write('You can display other information, such as code and data, with specific function calls')
+
+    other1, mid, other2 = st.beta_columns([20,1,20])
+    with other1: 
+        st.subheader("Display Code")
+        st.write('You can display code using __st.code__:')
         st.code(''' 
 st.code('st.write("a line of code")')
 st.code( ' ' '  # use triple quotes to create a block (no spaces)
@@ -211,7 +246,7 @@ if code_button:
     success!
 ' ' ')
         ''')
-        st.text('this output looks like:')
+        st.write('this output looks like:')
         st.code('st.write("a line of code")')
         st.code( '''  # use triple quotes to create a block (no spaces)
         st.write("A block of code")
@@ -220,7 +255,10 @@ if code_button:
             st.text('success!')
         ''')
 
-        st.write("Another way is with echo:")
+        st.write('''Another way is with __st.echo__, this is unique because anything after the echo function
+        will first be displayed in a code box, then executed directly below. It will save extra lines if 
+        your looking to show someone how you coded your app and then have it run automatically without 
+        having to retype everything''')
         st.code(''' 
 with st.echo(): # everything after this line will be printed
     st.text("Code to be executed and printed")
@@ -236,9 +274,9 @@ with st.echo(): # everything after this line will be printed
                 st.write('__Here you go__')
             
     # DISPLAY DATA
-    with col1: 
-        st.header("Display Data")
-        st.subheader("Pandas DataFrame")
+    with other2: 
+        st.subheader("Display Data")
+        st.write("__Pandas DataFrame__")
         st.code(''' 
 column_names = ['a','b','c','d','e']
 pandas_data = pd.DataFrame(np.random.randn(50,5), columns=column_names)
@@ -248,35 +286,42 @@ st.dataframe(pandas_data)
         pandas_data = pd.DataFrame(np.random.randn(50,5), columns=column_names)
         st.dataframe(pandas_data)
     
-        st.write("you can also use the table function:")
+        st.write("you can also use the __st.table__ function:")
         st.code(''' 
-st.table(pandas_data.iloc[0:10])
+st.table(pandas_data.iloc[0:5])
         ''')
-        st.table(pandas_data.iloc[0:10])
+        st.table(pandas_data.iloc[0:5])
 
-        st.subheader('Json data')
+        st.write('__Json data__')
         st.code(''' 
 json_data = {'Dictionary':True ,'Format':342}
 st.json(json_data)''')
         json_data = {'Dictionary':True ,'Format':342}
         st.json(json_data)
 
-    # MEDIA
-    with col1: 
-        st.header("Media")
+# ****************** END OF OTHER ******************
 
+    # MEDIA
+    st.header("Media")
+    st.write('''Media has its own unique finctions calls to create images, audio files and embedded videos. 
+    Hyperlinks simply uses a markdown command, but is included here as an example.''')
+
+    media1, mid, media2 = st.beta_columns([20,1,20])
+    with media1: 
+    
         st.subheader("Image")
         st.code('''
 st.image('img/MC.png',use_column_width = True)
         ''')
         st.image('img/MC.png',use_column_width = True)
 
-        st.subheader("audio file")
+        st.subheader("Audio file")
         st.code(''' 
 st.audio('img/audio_example.wav')
         ''')
         st.audio('img/audio_example.wav')
 
+    with media2:
         st.subheader("Video")
         st.code(''' 
 st.video('img/balloon_video.webm')
@@ -291,28 +336,26 @@ st.markdown("[Tweet us!](https://twitter.com/streamlit)") ''')
 
         st.write('[Check this out](https://www.streamlit.io/sharing)')
         st.markdown("[Tweet us!](https://twitter.com/streamlit)")
-        
+
+ # ****************** END OF MEDIA ******************       
     
     # SIDEBAR COMMANDS
-    with col2: 
-        st.header('Sidebar')
-        st.write('''
+    st.header('Sidebar')
+    st.write('''
 To add widgets or functions to the sidebar you simply have to add 'sidebar' before you call the function. 
 NOTE: the write function is not callable from the sidebar, you mucst use markdown''')
-        st.code('''
+    st.code('''
 # use st.sidebar.<widget> notation
 a = st.sidebar.button("Your button added to the sidebar!")
 if not a:
     st.sidebar.markdown('You added a widget to the sidebar!')
 
     ''')
-        add_sidebar = st.button('Run this code to add to the sidebar')
-        if add_sidebar: 
-            a = st.sidebar.button("Your button added to the sidebar!")
-            if not a:
-                st.sidebar.markdown('You added a widget to the sidebar!')
-            
-    
+    add_sidebar = st.button('Run this code to add to the sidebar')
+    if add_sidebar: 
+        a = st.sidebar.button("Click here to remove your button")
+        if not a:
+            st.sidebar.markdown('You added a widget to the sidebar!')
 
     # PLOT COMMANDS -> maybe they have their own section
 

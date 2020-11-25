@@ -8,11 +8,13 @@ def layout(page):
     st.write('''This page lists the layout commands (currently in beta) that are available in Streamlit. They are not yet integrated 
     into the basic Streamlit functions and therefore may not always work in unique (edge) cases. If you believe you have 
     encountered such a case please let us know on the [Streamlit Community Platform](https://discuss.streamlit.io/)''')
+
+# ***************** COLUMNS SECTION ****************
     st.header('Columns')
     st.subheader('Columns of Equal Size')
     st.code('''
     col1,col2 = st.beta_columns(2)
-    col1.image('brain.png', caption= "This ia a blue brain!")
+    col1.image('img/brain.png', caption= "This ia a blue brain!")
     data = pd.DataFrame([[1, 2, 3], [4, 5, 6], [7, 8, 9]], columns = ['a', 'b', 'c'])
     col2.write(data)''')
     
@@ -54,6 +56,7 @@ def layout(page):
         cols[0].image('img/row_%i_col_0.png' %i, use_column_width=True)
         cols[1].image('img/row_%i_col_1.jpg' %i, use_column_width=True)
 
+# ***************** CONTAINERS SECTION *************************
     st.header('Containers')
     st.write('''you may want to create a container to _________. A cool feature of containers, 
     it that it allows you to place things 'out of order'. ''')
@@ -86,6 +89,7 @@ container.write("This is _after_ the if button statement, but comes _before_ the
    
     container.write("This is _after_ the if button statement, but comes _before_ the 'Voila!!'")
 
+# ********************* EXPANDER SECTION *******************
     st.header("Expander")
     st.write('''The expander allows you to hide sections that you may not always want expanded. 
     When the user clicks the expander, it *__does not__* rerun the script, so this can be useful 

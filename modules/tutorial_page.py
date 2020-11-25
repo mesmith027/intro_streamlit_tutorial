@@ -23,6 +23,8 @@ def tutorial(page):
         exec(trial_code)
 
     # choose to display any of the pages to see code
+    # duplicate widget id NOT fixed, possible solutions: 
+        # create new functions to display basic commands what have unique keys
     st.markdown("---")
     st.write('Pick the page you want displayed below to list commands')
     page = st.radio('Navigation', [

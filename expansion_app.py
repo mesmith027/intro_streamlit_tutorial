@@ -1,7 +1,5 @@
 import streamlit as st
-#from streamlit_ace import st_ace
-#import pandas as pd
-#import numpy as np
+# unique modules 
 from modules.setup_page import setup 
 from modules.basic_page import basic
 from modules.layout_page import layout 
@@ -24,7 +22,7 @@ if __name__ == '__main__':
         'Advanced Commands',
         'Tutorial'])
 
-    # in side bar add links to the documentation and version this is based on
+    # in sidebar add links to the documentation and version this is based on
     st.sidebar.markdown('''
 <small>Summary of the [docs](https://docs.streamlit.io/en/stable/api.html), as of [Streamlit v0.71.0](https://www.streamlit.io/).</small>
     ''', unsafe_allow_html=True)

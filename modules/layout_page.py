@@ -135,8 +135,4 @@ functions that will cause an error (and their workarounds):
 - :exclamation: `st.sidebar.spinner()`
     - :white_check_mark: no current workarounds :disappointed:
     ''') #:heavy_multiplication_x: ideal: :X: (big red X from slack)
-
-    with st.spinner('working on it'): 
-        time.sleep(5)
-    st.success('done!')
     return

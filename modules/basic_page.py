@@ -25,12 +25,12 @@ def basic(page):
     
     # create columns to put all the functions in mid column buffer
     # for widgets section
-    col1, mid, col2 = st.beta_columns([20,1,20])
+    col1, mid, col2 = st.beta_columns([20,0.5,20])
 
     # __________Column 1 in Widgets__________
     with col1: 
         st.subheader('Button')
-        a_button = st.button('Hit me')
+        a_button = st.button('Hit me', key='button_run')
 
         st.code('''
 button = st.button('Hit me')
@@ -40,7 +40,7 @@ if button: # if it has been clicked
             st.write('TADA!')
 
         st.subheader('Checkbox')
-        a_checkbox = st.checkbox('Check me out')
+        a_checkbox = st.checkbox('Check me out', key='check_run')
         st.code(''' 
 checkbox = st.checkbox('Check me out') 
 if checkbox: # if clicked
@@ -52,7 +52,7 @@ if checkbox: # if clicked
         st.subheader('Radio Buttons')
         st.write('The options for a radio button can be a string, integer, float, or variable')
         variable = 12
-        radio_selection = st.radio('Radio', ['Option 1',variable,3.14159])
+        radio_selection = st.radio('Radio', ['Option 1',variable,3.14159], key='radio_run')
         st.code(''' 
 variable = 12
 radio_select = st.radio('Radio', ['Option 1',variable,3.14159]) 
@@ -71,22 +71,23 @@ elif radio_select == 3.14159:
         
         st.subheader('Sliders')
         st.markdown('__Single Slider__')
-        slider_value = st.slider('Slide me', min_value=0, max_value=10, value=5)
+        slider_value = st.slider('Slide me', min_value=0, max_value=10, value=5, key='slider_run')
     
         st.code('''
+variable = 12
 slider_pick = st.slider('Slide me',  min_value=0, max_value=10, value=5)
 st.write(slider_pick)''')
         st.write(slider_value)
 
         st.markdown('__Double Ended Slider__')
-        double_slider = st.slider('A range', 0,100, (10,90))
+        double_slider = st.slider('A range', 0,100, (10,90), key='dslider_run')
         st.code('''
 dble_slider = st.slider('A range', 0,100, (10,90))
 st.write(dble_slider)''')
         st.write(double_slider)
 
         st.markdown('__Fixed Option Slider__')
-        s_slider = st.select_slider('Slide to select', options=[1,'Middle', variable], value = 'Middle')
+        s_slider = st.select_slider('Slide to select', options=[1,'Middle', variable], value = 'Middle', key='sslider_run')
         st.code('''
 fixed_slider = st.select_slider('Slide to select', 
     options=[1,'Middle', variable],value = 'Middle')
@@ -98,20 +99,20 @@ st.write(fixed_slider)''')
         st.code(''' 
 upload_file = st.file_uploader('File uploader')
         ''')
-        upload_file = st.file_uploader('File uploader')
+        upload_file = st.file_uploader('File uploader',key='file_run')
 
         st.markdown("__Colour Select__")
         st.code(''' 
 colour = st.color_picker('Pick a color')
 st.write(colour)''')
-        color = st.color_picker('Pick a color')
+        color = st.color_picker('Pick a color',key='color_run')
         st.write(color)
 
     # __________Column 2 in Widgets__________
     with col2: 
         st.subheader('Selectbox')
         st.write('Select 1 option from a variety')
-        single_select = st.selectbox('Single Select', ['what', 'will', 'you', 'choose?'])
+        single_select = st.selectbox('Single Select', ['what', 'will', 'you', 'choose?'], key='select_run')
 
         st.code(''' 
 single_select_box = st.selectbox('Single Select', 
@@ -128,7 +129,7 @@ else:
 
         st.subheader('Multi-Select Box')
         st.write('Select 1 or more options from a variety')
-        multi_select = st.multiselect('Multi-Select', ['what', 'will', 'you', 'choose?'])
+        multi_select = st.multiselect('Multi-Select', ['what', 'will', 'you', 'choose?'],key='multi_run')
         st.code('''
 multi_select_box = st.multiselect('Multi-Select', 
     ['what', 'will', 'you', 'choose?'])
@@ -147,18 +148,18 @@ text_area_unlim = st.text_area(title_unlim, "Text to Display")
 st.write(text_area_unlim) ''')
 
         title_limited = "Enter some text: limit to number of characters"
-        text_limited = st.text_input(title_limited, 'display text')
+        text_limited = st.text_input(title_limited, 'display text', key='text_run')
         st.write(text_limited)
 
         title_unlim = "Area for textual entry: no limit to number of characters"
-        text_unlim = st.text_area(title_unlim, "Text to Display")
+        text_unlim = st.text_area(title_unlim, "Text to Display", key='tarea_run')
         st.write(text_unlim)
     
         st.markdown('__Number Input__')
         st.code(''' 
 number = st.number_input('Enter a number')
 st.write(number)''')
-        a_number = st.number_input('Enter a number')
+        a_number = st.number_input('Enter a number', key='number_run')
         st.write(a_number)
 
         st.markdown('__Date Input__')
@@ -167,7 +168,7 @@ st.write(number)''')
 date = st.date_input('Date input')
 st.write(date)
 st.write(type(date)) ''')
-        a_date = st.date_input('Date input')
+        a_date = st.date_input('Date input', key='date_run')
         st.write(a_date)
         st.write(type(a_date))
 
@@ -177,7 +178,7 @@ st.write(type(date)) ''')
 time = st.time_input('Time entry')
 st.write(time)
 st.write(type(time))''')
-        a_time = st.time_input('Time entry')
+        a_time = st.time_input('Time entry',key='time_run')
         st.write(a_time)
         st.write(type(a_time))
 
@@ -213,6 +214,7 @@ st.write(type(time))''')
         st.write('The write command, also works when passing most objects:')
         an_object = ['list', 3.14159,0]
         st.code('''
+an_object = ['list', 3.14159,0]
 st.write('The write command, also works when passing most objects:')
 st.write(an_object) #this is a list
          ''')
@@ -288,6 +290,8 @@ st.dataframe(pandas_data)
     
         st.write("you can also use the __st.table__ function:")
         st.code(''' 
+column_names = ['a','b','c','d','e']
+pandas_data = pd.DataFrame(np.random.randn(50,5), columns=column_names)
 st.table(pandas_data.iloc[0:5])
         ''')
         st.table(pandas_data.iloc[0:5])

@@ -16,11 +16,11 @@ if __name__ == '__main__':
     st.sidebar.markdown('Pick the page you wish to visit for a list of all the \
     possible functions and commands in Streamlit')
     page = st.sidebar.radio('Navigation', [
-        'Setup and Command line',
+        'Information and Command line',
         'Basic Commands',
         'Layout Commands',
         'Advanced Commands',
-        'Tutorial'])
+        'Try it Yourself!'])
 
     # in sidebar add links to the documentation and version this is based on
     st.sidebar.markdown('''
@@ -28,7 +28,7 @@ if __name__ == '__main__':
     ''', unsafe_allow_html=True)
 
     # run associated page program for each selection
-    if page == 'Setup and Command line':
+    if page == 'Information and Command line':
         setup(page)
     elif page == 'Basic Commands':
         basic(page)
@@ -36,5 +36,5 @@ if __name__ == '__main__':
         layout(page)
     elif page == 'Advanced Commands':
         advanced(page)
-    elif page == 'Tutorial':
+    elif page == 'Try it Yourself!':
         tutorial(page)

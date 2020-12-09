@@ -4,14 +4,26 @@ def setup(page):
     '''Main page for Streamlit Setup and Command line'''
 
     st.title(page)
+    st.markdown('''
+    Streamlit was created to bring data science insights and app making together into one easy to use, seamless environment. 
+    Here are some ways streamlit might be useful in your life: 
+
+    - Demo a complex subject interactively to help people learn
+        - [Like this Monte Carlo app](https://share.streamlit.io/mesmith027/streamlit_webapps/main/MC_pi/streamlit_app.py)
+    - Share machine learning algorithms 
+        - example machine learning dashboard
+    - 
+    ''')
+
     col1, col2 = st.beta_columns(2)
+    with col1:
+        st.markdown('''
+        
+        ''')
 
-    with col1: 
-        st.markdown('__How to install and import__')
+    with col2: 
+        st.markdown('__Import convention__')
 
-        st.code('$ pip install streamlit')
-
-        st.markdown('Import convention')
         st.code('>>> import streamlit as st')
 
         st.markdown('__How to uninstall__')
@@ -29,24 +41,5 @@ $ streamlit cache clear
 $ streamlit docs
 $ streamlit --version
 $ pip install streamlit-nightly --upgrade
-        ''')
-
-    with col2:
-        st.markdown('''
-        1. What did I make and why: 
-            * expansion on Daniel's popular Cheat Sheet
-            * I felt that it needed 
-                * some more use case examples
-                * pictures of what the functions/widgets actually create
-                * Streamlit is ALL about beautiful visuals!
-        2. What parts of Streamlit does it showcase?
-            * Ease of use
-            * Demo aspects to new users 
-            * print each page and create "cheat sheets"
-        3. What did you learn?
-            * Literally all the basic function calls 
-            * Beta functions
-            * there is no place to find experimental_ functions ([on docs](https://docs.streamlit.io/en/stable/#))!?
-                * how do our users try out new things?
-        ''')
+        ''')    
     return

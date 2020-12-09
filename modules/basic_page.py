@@ -342,24 +342,6 @@ st.markdown("[Tweet us!](https://twitter.com/streamlit)") ''')
         st.markdown("[Tweet us!](https://twitter.com/streamlit)")
 
  # ****************** END OF MEDIA ******************       
-    
-    # SIDEBAR COMMANDS
-    st.header('Sidebar')
-    st.write('''
-To add widgets or functions to the sidebar you simply have to add 'sidebar' before you call the function. 
-NOTE: the write function is not callable from the sidebar, you mucst use markdown''')
-    st.code('''
-# use st.sidebar.<widget> notation
-sidebar_button = st.sidebar.button("Your button added to the sidebar!")
-if not sidebar_button: # if the button is NOT clicked display this message
-    st.sidebar.markdown('You added a widget to the sidebar!')
-
-    ''')
-    add_sidebar = st.button('Run this code to add to the sidebar')
-    if add_sidebar: 
-        a = st.sidebar.button("Click here to remove your button")
-        if not a:
-            st.sidebar.markdown('You added a widget to the sidebar!')
 
     # PLOT COMMANDS -> maybe they have their own section
 

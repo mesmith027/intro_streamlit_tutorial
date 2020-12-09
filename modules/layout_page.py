@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import time
 
 def layout(page):
     '''Layout Streamlit commands'''
@@ -103,4 +104,39 @@ with st.beta_expander('Expand Me'):
         st.write('Well hello there!')
         st.balloons()
 
+# ********************* SIDEBAR SECTION *******************
+    st.header('Sidebar')
+    st.write(''' 
+You may have noticed the handy sidebar to your left :point_left:
+
+If you would like to create your own you simply need to add `sidebar` before you call a streamlit function. For example:''')
+
+    st.code('''
+# use st.sidebar.<widget> notation
+sidebar_button = st.sidebar.button("Your button added to the sidebar!")
+if not sidebar_button: # if the button is NOT clicked display this message
+    st.sidebar.markdown('You added a widget to the sidebar!')
+
+    ''')
+    add_sidebar = st.button('Run this code to add to the sidebar')
+    if add_sidebar: 
+        a = st.sidebar.button("Click here to remove your button", key='sidebar_button_run')
+        if not a:
+            st.sidebar.markdown('You added a widget to the sidebar!')
+    
+    st.write('''
+NOTE: The `st.sidebar.<function>`notation works for basically ALL the streamlit functions. However, there are a few that it _doesn't_
+work with, those we have listed here (as it's shorter to list the few it doesn't work with): 
+
+functions that will cause an error (and their workarounds):
+
+-  :exclamation: :x: `st.sidebar.echo()`
+    - :white_check_mark: `st.sidebar.code()`
+- :exclamation: `st.sidebar.spinner()`
+    - :white_check_mark: no current workarounds :disappointed:
+    ''') #:heavy_multiplication_x: ideal: :X: (big red X from slack)
+
+    with st.spinner('working on it'): 
+        time.sleep(5)
+    st.success('done!')
     return

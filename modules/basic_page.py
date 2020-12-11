@@ -22,7 +22,8 @@ def basic(page):
     st.header('Interactive Widgets')
     st.write('''Lets start with all the possible widgets that you can put in your app! There are many interactive 
     widgets that you can use to allow the user to interact with your app.''')
-    
+    st.markdown("---")
+
     # create columns to put all the functions in mid column buffer
     # for widgets section
     col1, mid, col2 = st.beta_columns([20,0.5,20])
@@ -38,7 +39,8 @@ if button: # if it has been clicked
     st.write('TADA!')''')
         if a_button: # if it has been clicked
             st.write('TADA!')
-
+    
+        st.markdown("---")
         st.subheader('Checkbox')
         a_checkbox = st.checkbox('Check me out', key='check_run')
         st.code(''' 
@@ -48,7 +50,8 @@ if checkbox: # if clicked
 
         if a_checkbox: # if clicked    
             st.write("I'm awesome!")
-            
+
+        st.markdown("---")  
         st.subheader('Radio Buttons')
         st.write('The options for a radio button can be a string, integer, float, or variable')
         variable = 12
@@ -69,6 +72,7 @@ elif radio_select == 3.14159:
         elif radio_selection == 3.14159:
             st.write(np.pi)
         
+        st.markdown("---")
         st.subheader('Sliders')
         st.markdown('__Single Slider__')
         slider_value = st.slider('Slide me', min_value=0, max_value=10, value=5, key='slider_run')
@@ -79,6 +83,7 @@ slider_pick = st.slider('Slide me',  min_value=0, max_value=10, value=5)
 st.write(slider_pick)''')
         st.write(slider_value)
 
+        st.markdown("---")
         st.markdown('__Double Ended Slider__')
         double_slider = st.slider('A range', 0,100, (10,90), key='dslider_run')
         st.code('''
@@ -86,6 +91,7 @@ dble_slider = st.slider('A range', 0,100, (10,90))
 st.write(dble_slider)''')
         st.write(double_slider)
 
+        st.markdown("---")
         st.markdown('__Fixed Option Slider__')
         s_slider = st.select_slider('Slide to select', options=[1,'Middle', variable], value = 'Middle', key='sslider_run')
         st.code('''
@@ -94,6 +100,7 @@ fixed_slider = st.select_slider('Slide to select',
 st.write(fixed_slider)''')
         st.write(s_slider)
 
+        st.markdown("---")
         st.subheader('Odds & Ends')
         st.markdown("__Upload a file__")
         st.code(''' 
@@ -101,6 +108,7 @@ upload_file = st.file_uploader('File uploader')
         ''')
         upload_file = st.file_uploader('File uploader',key='file_run')
 
+        st.markdown("---")
         st.markdown("__Colour Select__")
         st.code(''' 
 colour = st.color_picker('Pick a color')
@@ -127,6 +135,7 @@ else:
         else: 
             st.write('Winner Winner :chicken: Dinner!')
 
+        st.markdown("---")
         st.subheader('Multi-Select Box')
         st.write('Select 1 or more options from a variety')
         multi_select = st.multiselect('Multi-Select', ['what', 'will', 'you', 'choose?'],key='multi_run')
@@ -136,6 +145,7 @@ multi_select_box = st.multiselect('Multi-Select',
 st.write(multi_select_box)''')
         st.write(multi_select)
 
+        st.markdown("---")
         st.subheader('Various Input fields')
         st.markdown('__Text Input__')
         st.code('''
@@ -154,7 +164,8 @@ st.write(text_area_unlim) ''')
         title_unlim = "Area for textual entry: no limit to number of characters"
         text_unlim = st.text_area(title_unlim, "Text to Display", key='tarea_run')
         st.write(text_unlim)
-    
+
+        st.markdown("---")
         st.markdown('__Number Input__')
         st.code(''' 
 number = st.number_input('Enter a number')
@@ -162,6 +173,7 @@ st.write(number)''')
         a_number = st.number_input('Enter a number', key='number_run')
         st.write(a_number)
 
+        st.markdown("---")
         st.markdown('__Date Input__')
         st.write("The date input is automatically the datetime class, default is the current date")
         st.code('''
@@ -172,6 +184,7 @@ st.write(type(date)) ''')
         st.write(a_date)
         st.write(type(a_date))
 
+        st.markdown("---")
         st.markdown('__Time Input__')
         st.write("The time input is automatically the datetime class, default is the current time")
         st.code('''
@@ -185,8 +198,10 @@ st.write(type(time))''')
 # ****************** END OF WIDGETS ******************
 
     # CREATING TEXT
+    st.markdown("---")
     st.header('Display text')
     st.write('There are various ways to display text in Streamlit')
+    st.markdown("---")
 
     text1, mid, text2 = st.beta_columns([20,1,20])
 
@@ -232,8 +247,10 @@ st.write(an_object) #this is a list
 # ****************** END OF TEXT ******************
 
     # DISPLAY OTHER INFORMATION
+    st.markdown("---")
     st.header('Display Other Information')
     st.write('You can display other information, such as code and data, with specific function calls')
+    st.markdown("---")
 
     other1, mid, other2 = st.beta_columns([20,1,20])
     with other1: 
@@ -306,9 +323,11 @@ st.json(json_data)''')
 # ****************** END OF OTHER ******************
 
     # MEDIA
+    st.markdown("---")
     st.header("Media")
     st.write('''Media has its own unique finctions calls to create images, audio files and embedded videos. 
     Hyperlinks simply uses a markdown command, but is included here as an example.''')
+    st.markdown("---")
 
     media1, mid, media2 = st.beta_columns([20,1,20])
     with media1: 
@@ -319,6 +338,7 @@ st.image('img/MC.png',use_column_width = True)
         ''')
         st.image('img/MC.png',use_column_width = True)
 
+        st.markdown("---")
         st.subheader("Audio file")
         st.code(''' 
 st.audio('img/audio_example.wav')
@@ -332,6 +352,7 @@ st.video('img/balloon_video.webm')
         ''')
         st.video('img/balloon_video.webm')
 
+        st.markdown("---")
         st.subheader("Hyperlink")
         st.write("You can add hyperlinks in by using standard markdown notation")
         st.code('''
@@ -341,6 +362,7 @@ st.markdown("[Tweet us!](https://twitter.com/streamlit)") ''')
         st.write('[Check this out](https://www.streamlit.io/sharing)')
         st.markdown("[Tweet us!](https://twitter.com/streamlit)")
 
+    st.markdown("---")
  # ****************** END OF MEDIA ******************       
 
     # PLOT COMMANDS -> maybe they have their own section

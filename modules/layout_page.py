@@ -8,7 +8,8 @@ def layout(page):
     st.title(page)
     st.write('''This page lists the layout commands (currently in beta) that are available in Streamlit. They are not yet integrated 
     into the basic Streamlit functions and therefore may not always work in unique (edge) cases. If you believe you have 
-    encountered such a case please let us know on the [Streamlit Community Platform](https://discuss.streamlit.io/)''')
+    encountered such a case please let us know on the [Streamlit Community Platform.](https://discuss.streamlit.io/)''')
+    st.markdown("---")
 
 # ***************** COLUMNS SECTION ****************
     st.header('Columns')
@@ -47,21 +48,22 @@ with col5:
     st.code('''
 for i in range(1,3): # number of rows in your table! = 2
     cols = st.beta_columns(2) # number of columns in each row! = 2
-    # first colum if the ith row
+    # first column if the ith row
     cols[0].image('img/row_%i_col_0.png' %i, use_column_width=True)
     cols[1].image('img/row_%i_col_1.jpg' %i, use_column_width=True)
     ''')
     for i in range(1,3): # number of rows in your table! = 2
         cols = st.beta_columns(2) # number of columns in each row! = 2
-        # first colum if the ith row
+        # first column if the ith row
         cols[0].image('img/row_%i_col_0.png' %i, use_column_width=True)
         cols[1].image('img/row_%i_col_1.jpg' %i, use_column_width=True)
 
 # ***************** CONTAINERS SECTION *************************
+    st.markdown("---")
     st.header('Containers')
     st.write('''you may want to create a container to _________. A cool feature of containers, 
     it that it allows you to place things 'out of order'. ''')
-    st.subheader('Container using with')
+    st.subheader('Container using `with`:')
     st.code(''' 
 with st.beta_container():
     st.write("This bar graph is inside the container")
@@ -91,6 +93,7 @@ container.write("This is _after_ the if button statement, but comes _before_ the
     container.write("This is _after_ the if button statement, but comes _before_ the 'Voila!!'")
 
 # ********************* EXPANDER SECTION *******************
+    st.markdown("---")
     st.header("Expander")
     st.write('''The expander allows you to hide sections that you may not always want expanded. 
     When the user clicks the expander, it *__does not__* rerun the script, so this can be useful 
@@ -105,6 +108,7 @@ with st.beta_expander('Expand Me'):
         st.balloons()
 
 # ********************* SIDEBAR SECTION *******************
+    st.markdown("---")
     st.header('Sidebar')
     st.write(''' 
 You may have noticed the handy sidebar to your left :point_left:
@@ -130,7 +134,7 @@ work with, those we have listed here (as it's shorter to list the few it doesn't
 
 functions that will cause an error (and their workarounds):
 
--  :exclamation: :x: `st.sidebar.echo()`
+-  :exclamation: :X: `st.sidebar.echo()`
     - :white_check_mark: `st.sidebar.code()`
 - :exclamation: `st.sidebar.spinner()`
     - :white_check_mark: no current workarounds :disappointed:

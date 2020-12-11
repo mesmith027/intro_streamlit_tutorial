@@ -13,7 +13,7 @@ def layout(page):
 
 # ***************** COLUMNS SECTION ****************
     st.header('Columns')
-    st.subheader('Columns of Equal Size')
+    st.subheader('Columns of Equal Size:')
     st.code('''
 col1,col2 = st.beta_columns(2)
 col1.image('img/brain.png', caption= "This ia a blue brain!")
@@ -23,10 +23,10 @@ col2.write(data)''')
     col1,col2 = st.beta_columns(2)
     col1.image('img/brain.png', caption= "This ia a blue brain!")
     data = pd.DataFrame([[1, 2, 3], [4, 5, 6], [7, 8, 9]], columns = ['a', 'b', 'c'])
-    col2.subheader('A Dataframe')
+    col2.write('__A Dataframe__')
     col2.write(data)
 
-    st.subheader('Columns of Different Sizes')
+    st.subheader('Columns of Different Sizes:')
     st.code('''
 col3,col4,col5 = st.beta_columns([1,2,3]) 
 # 3 columns where first is the smallest, the second is 2x the size of the first and 3rd is 3x the first
@@ -44,7 +44,7 @@ with col5:
     with col5: 
         st.image('img/MC.png',use_column_width = True, caption="A Streamlit Sharing App")
 
-    st.subheader('Columns to Make a Grid')
+    st.subheader('Columns to Make a Grid:')
     st.code('''
 for i in range(1,3): # number of rows in your table! = 2
     cols = st.beta_columns(2) # number of columns in each row! = 2
@@ -74,7 +74,7 @@ with st.beta_container():
         st.write("This bar graph is inside the container")
         st.bar_chart(np.random.randn(50, 3))
 
-    st.subheader('Container out of order')
+    st.subheader('Container out of order:')
     st.code(''' 
 container = st.beta_container() 
 container.write("This button is inside a container")
@@ -117,7 +117,7 @@ If you would like to create your own you simply need to add `sidebar` before you
 
     st.code('''
 # use st.sidebar.<widget> notation
-sidebar_button = st.sidebar.button("Your button added to the sidebar!")
+sidebar_button = st.sidebar.button("Click here to remove your button")
 if not sidebar_button: # if the button is NOT clicked display this message
     st.sidebar.markdown('You added a widget to the sidebar!')
 

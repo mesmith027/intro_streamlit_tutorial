@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit_ace import st_ace
 import pandas as pd
 import numpy as np
+import time 
 from modules.basic_page import basic
 from modules.layout_page import layout 
 from modules.advanced_page import advanced

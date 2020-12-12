@@ -2,6 +2,7 @@ import streamlit as st
 
 def setup(page):
     '''Main page for Streamlit Setup and Command line'''
+    # Maybe add these to this page: st.help() st.get_option(), st.set_option()
 
     st.title(page)
     st.markdown('''

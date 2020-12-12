@@ -19,7 +19,7 @@ def advanced(page):
     Lets see what cool things you can do to keep your user occupied while your app is updating.
     """)
     col1, mid, col2 = st.beta_columns([20,0.5,20])
-    #  balloons, warning, info, success, exception 
+    #  progress, balloons, info, success, exception,
     
     with col1:
         st.subheader('Spinner')
@@ -95,4 +95,6 @@ if check:
 
     # st.cache 
     # st.stop()
+    # st.empty()
+   
     return

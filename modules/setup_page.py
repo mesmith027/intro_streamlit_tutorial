@@ -45,8 +45,7 @@ $ streamlit --help
 # commands and arguements
 
 $ streamlit run your_script.py 
-# use in the directory of the webapp your developing to run your app 
-# locally
+# use in the directory to run your app locally
 
 $ streamlit hello
 # how to get here! 

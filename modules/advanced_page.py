@@ -12,14 +12,13 @@ def advanced(page):
     - not just for advanced users can be for anyone 
     - just give you advanced features and control over app and function
     """)
-
+# ****************** PROGRESS AND STATUS  ******************
     st.header('Progress and Status') 
     st.write("""These commands can be very useful for managing a users expectation if you are loading a large data set, running 
     an expensive computation or just wanting to keep your app user updates on whats happening behind the scenes! :eyes: 
     Lets see what cool things you can do to keep your user occupied while your app is updating.
     """)
     col1, mid, col2 = st.beta_columns([20,0.5,20])
-    #  progress, balloons, info, success, exception,
     
     with col1:
         st.subheader('Spinner')
@@ -55,6 +54,23 @@ else:
             st.write("Hey %s :wave:" %text)
         st.markdown("---")
 
+        st.subheader("Information")
+        st.write("You can use this to display info to your app user")
+        st.code("""
+st.info("You need to know this bit of info before continuing!")
+        """)
+        st.info("You need to know this bit of info before continuing!")
+        st.markdown("---")
+
+        st.subheader("Balloons")
+        st.write("While this doesn't strictly tell the user information, it is a fun way to let them know something has happened!")
+        st.code("""
+st.balloons() 
+        """)
+        check = st.checkbox("See what balloons do", key = "balloon_run")
+        if check: 
+            st.balloons()
+
     with col2: 
         st.subheader("Success")
         st.write("Use this when you want to let your user know that a task as been successful")
@@ -73,26 +89,56 @@ st.success("Created Pandas DataFrame")
         st.subheader("Warning")
         st.write("Use this to let your user know something could go wrong")
         st.code("""
-check = st.checkbox("Run this code")
-if check: 
-    st.info("Something may happen that I can't control....")
-    n = np.random.normal()
-    if n < 0: 
-        st.write(n)
-    else: 
-        st.write('Yup something happened!')
+st.warning("Something may happen that I can't control....")
+n = np.random.normal()
+if n < 0: 
+    st.write(n)
+else: 
+    st.write('Yup something happened!')
         """)
 
-        check = st.checkbox("Run this code", key="info_run")
-        if check: 
-            st.info("Something may happen that I can't control....")
-            n = np.random.normal()
-            if n < 0: 
-                st.write(n)
-            else: 
-                st.write('Yup something happened!')
+        st.warning("Something may happen that I can't control....")
+        n = np.random.normal()
+        if n < 0: 
+            st.write(n)
+        else: 
+            st.write('Yup something happened!')
         st.markdown("---")
 
+        st.subheader("Progress")
+        st.write("This is similar to spinner, but allows you to increment how complete your task is!")
+        st.code("""
+my_bar = st.progress(0)  
+for amount_complete in range(100): 
+    time.sleep(0.1)
+    my_bar.progress(amount_complete +1)
+        """) 
+        progress = st.checkbox("Run Progress code", key="progress_run")
+        if progress: 
+            my_bar = st.progress(0)  
+            for amount_complete in range(100): 
+                time.sleep(0.1)
+                my_bar.progress(amount_complete +1)
+        
+        st.markdown("---")
+
+        st.subheader("Exception")
+        st.write("")
+        st.code("""
+e = RuntimeError('This is an exception of type RuntimeError')
+st.exception(e)
+        """)
+        e = RuntimeError('This is an exception of type RuntimeError')
+        st.exception(e)
+
+# ****************** CONTROL FLOW  ******************
+    st.markdown("---")
+    st.header("Control Flow")
+
+
+# ****************** EXPERIMENTAL  ******************
+    st.markdown("---")
+    st.header("Experimental")
     # st.cache 
     # st.stop()
     # st.empty()

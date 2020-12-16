@@ -134,13 +134,28 @@ st.exception(e)
 # ****************** CONTROL FLOW  ******************
     st.markdown("---")
     st.header("Control Flow")
-
+    # st.cache 
+    # st.stop()
+    # st.empty()
+    # st.help()
 
 # ****************** EXPERIMENTAL  ******************
     st.markdown("---")
     st.header("Experimental")
-    # st.cache 
-    # st.stop()
-    # st.empty()
+
+    exp1, mid, exp2 = st.beta_columns([20,0.5,20])
+
+    with exp1: 
+        st.subheader("show")
+
+        st.subheader("rerun")
+
+
+    with exp2:
+        st.subheader("get query parameters")
+
+        st.subheader("set query parameters")
+
+    
    
     return

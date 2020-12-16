@@ -5,7 +5,7 @@ import time
 
 def layout(page):
     '''Layout Streamlit commands'''
-    # st.set_page_config() add section
+    
     st.title(page)
     st.write('''This page lists the layout commands (currently in beta) that are available in Streamlit. They are not yet integrated 
     into the basic Streamlit functions and therefore may not always work in unique (edge) cases. If you believe you have 
@@ -140,4 +140,8 @@ functions that will cause an error (and their workarounds):
 - :exclamation: `st.sidebar.spinner()`
     - :white_check_mark: no current workarounds :disappointed:
     ''') #:heavy_multiplication_x: ideal: :X: (big red X from slack)
+
+# *************************** SET PAGE CONFIG ***********************
+    st.markdown("---")
+    st.header("Set Page Configuration")
     return

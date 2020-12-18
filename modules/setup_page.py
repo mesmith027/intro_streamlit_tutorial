@@ -6,6 +6,8 @@ def setup(page):
 
     st.title(page)
     st.markdown('''
+    Hi! :wave: and welcome to Streamlit! :hugging_face:
+    
     Streamlit was created to bring data science insights and app making together into one easy to use, seamless environment. 
     __Fun fact:__ Streamlit got its name [from a typo](https://discuss.streamlit.io/t/why-is-streamlit-called-streamlit/339)! :laughing:
     ''')

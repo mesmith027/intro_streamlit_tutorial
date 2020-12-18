@@ -60,10 +60,10 @@ $ streamlit demos
 # launches a webapp that shows you 4 demos that you can try
 
 $ streamlit config show
-# what does this do 
+# the options you can set and their current values
 
 $ streamlit cache clear
-# what does this do 
+# Clears persisted files from the on-disk Streamlit cache, if present.
 
 $ streamlit docs
 # opens a link to our documentation in your default web browser
@@ -72,7 +72,7 @@ $ streamlit --version
 # returns the current version of Streamlit you have installed
 
 $ pip install streamlit-nightly --upgrade
-# what does this do 
+# one-time install of the most up to date Streamlit even before the release!
         ''')    
 
         st.markdown('__How to uninstall:__')

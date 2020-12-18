@@ -9,8 +9,8 @@ def advanced(page):
     st.write("""
     Blurb about advanced commands
 
-    - not just for advanced users can be for anyone 
-    - just give you advanced features and control over app and function
+    - not just for experienced users can be for anyone * dont use word advanced too much
+    - just give you unique features and control over app and function
     """)
 # ****************** PROGRESS AND STATUS  ******************
     st.header('Progress and Status') 
@@ -134,9 +134,10 @@ st.exception(e)
 # ****************** CONTROL FLOW  ******************
     st.markdown("---")
     st.header("Control Flow")
-    # st.cache 
+    # st.cache -> its own section? speed up your app section title 
     # st.stop()
     # st.empty()
+    # containter could go here 
     # st.help()
 
 # ****************** EXPERIMENTAL  ******************
@@ -147,14 +148,32 @@ st.exception(e)
 
     with exp1: 
         st.subheader("show")
+        st.code('''
+dataframe = pd.DataFrame({
+    'first column': [1, 2, 3, 4],
+    'second column': [10, 20, 30, 40],
+    })
+st.experimental_show(dataframe)
+        ''')
+        dataframe = pd.DataFrame({
+            'first column': [1, 2, 3, 4],
+            'second column': [10, 20, 30, 40],
+            })
+        st.experimental_show(dataframe)
 
         st.subheader("rerun")
 
 
     with exp2:
-        st.subheader("get query parameters")
-
         st.subheader("set query parameters")
+        st.code('''
+        ''')
+
+        st.subheader("get query parameters")
+        st.code('''
+
+        ''')
+        st.write(st.experimental_get_query_params())
 
     
    

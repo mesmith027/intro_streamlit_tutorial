@@ -26,7 +26,7 @@ def basic(page):
 
     # create columns to put all the functions in mid column buffer
     # for widgets section
-    col1, mid, col2 = st.beta_columns([20,0.5,20])
+    buff, col1, mid, col2, buff = st.beta_columns([1,20,0.5,20,1])
 
     # __________Column 1 in Widgets__________
     with col1: 

@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import time
+import pickle as pkle
 
 def layout(page):
     '''Layout Streamlit commands'''
@@ -144,4 +145,8 @@ functions that will cause an error (and their workarounds):
 # *************************** SET PAGE CONFIG ***********************
     st.markdown("---")
     st.header("Set Page Configuration")
+
+    page_name = st.button('Set the page name')
+    #if page_name: 
+        
     return

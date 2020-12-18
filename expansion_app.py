@@ -1,4 +1,6 @@
 import streamlit as st
+import os 
+import pickle as pkle
 # unique modules 
 from modules.setup_page import setup 
 from modules.basic_page import basic
@@ -10,8 +12,13 @@ from modules.my_sidebar import sidebar
 # Run the program
 if __name__ == '__main__':
 
-    # Create a wide layout for the pages
-    st.set_page_config(page_title='Streamlit cheat sheet',layout="wide")
+    # determine page layout 
+    if os.path.isfile('format.txt'):
+        page_code = pkle.load(open('format.txt', 'rb'))
+        exec(page_code)
+        os.remove('format.txt')
+    else: 
+        st.set_page_config(page_title='Streamlit cheat sheet',layout="wide")
 
     # create the sidebar
     page = sidebar()

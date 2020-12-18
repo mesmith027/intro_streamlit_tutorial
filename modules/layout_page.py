@@ -23,7 +23,7 @@ data = pd.DataFrame([[1, 2, 3], [4, 5, 6], [7, 8, 9]], columns = ['a', 'b', 'c']
 col2.write(data)''')
     
     col1,col2 = st.beta_columns(2)
-    col1.image('img/brain.png', caption= "This ia a blue brain!")
+    col1.image('img/brain.png', caption= "This ia a blue brain!", use_column_width=True)
     data = pd.DataFrame([[1, 2, 3], [4, 5, 6], [7, 8, 9]], columns = ['a', 'b', 'c'])
     col2.write('__A Dataframe__')
     col2.write(data)
@@ -136,7 +136,7 @@ work with, those we have listed here (as it's shorter to list the few it doesn't
 
 functions that will cause an error (and their workarounds):
 
--  :exclamation: :X: `st.sidebar.echo()`
+-  :exclamation: `st.sidebar.echo()`
     - :white_check_mark: `st.sidebar.code()`
 - :exclamation: `st.sidebar.spinner()`
     - :white_check_mark: no current workarounds :disappointed:
@@ -146,7 +146,66 @@ functions that will cause an error (and their workarounds):
     st.markdown("---")
     st.header("Set Page Configuration")
 
-    page_name = st.button('Set the page name')
-    #if page_name: 
+    buff, config1, mid, config2, buff = st.beta_columns([1,20,0.5,20,1])
+
+    with config1: 
+        st.subheader("Set the layout")
+        st.write('''
+You can change the layout of your app in two ways, the default is centered, with one `centered` column down the 
+centre (surprise!) of the app. The other option is `wide`, which this app already is! If you would like to see what 
+centered looks like click the 'Change the Layout' button.
+        ''')
+        st.code('''
+st.set_page_config(page_title="Streamlit cheat sheet",
+    layout="centered")
+        ''')
+
+        layout_change = st.button('Change the Layout')
+        if layout_change: 
+            code_to_save = 'st.set_page_config(page_title="Streamlit cheat sheet",layout="centered")'
+            pkle.dump(code_to_save, open('format.txt', 'wb'))
+            st.experimental_rerun()
         
+        st.markdown("---")
+        st.subheader("Set the App Name")
+        st.code('''
+usr_name = st.text_input('Pick a page name')
+st.set_page_config(page_title="%s",layout="wide") %usr_name
+        ''')
+        usr_name = st.text_input('Pick a page name')
+        if len(usr_name) == 0: 
+            usr_name = "Pick a Name!"
+
+        page_name = st.button('Set the app name')
+        if page_name: 
+            code_to_save = 'st.set_page_config(page_title="%s",layout="wide")' %usr_name
+            pkle.dump(code_to_save, open('format.txt', 'wb'))
+            st.experimental_rerun()
+        
+    with config2: 
+        st.subheader("Set the Icon")
+        st.write('''
+In the tab what houses this app, there is a default icon of a black and white Streamlit logo. BUT we wanted you to be 
+able to change this to any emoji you wanted to have! To do this, check out the code below:
+        ''')
+        st.code('''
+st.set_page_config(page_title="Streamlit cheat sheet",
+    layout="wide", page_icon=":monkey:")
+        ''')
+        #st.set_page_config() page_icon=None
+        emoji_change = st.button("Change the Emoji")
+        if emoji_change: 
+            code_to_save = 'st.set_page_config(page_title="Streamlit cheat sheet",layout="wide", page_icon=":monkey:")'
+            pkle.dump(code_to_save, open('format.txt', 'wb'))
+            st.experimental_rerun()
+
+
+        st.markdown("---")
+        st.subheader("Set the Sidebar")
+        # initial_sidebar_state='auto'
+        st.write('''
+        ''')
+        st.code('''
+        ''')
+
     return

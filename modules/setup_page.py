@@ -14,6 +14,7 @@ def setup(page):
 
     col1, mid, col2 = st.beta_columns([20,0.5,20])
     with col1:
+        st.image('img/row_2_col_0.png', use_column_width=True)
         st.markdown('''
     Here are some ways Streamlit might be useful in your life: 
     - Demo a complex subject interactively to help people learn
@@ -29,6 +30,9 @@ def setup(page):
     If you run into any issues, want to show off what you have built, or you just want to hangout with other Streamlit community members 
     checkout our [community forum](https://discuss.streamlit.io/). There, you can create an account, hear about official announcements, 
     participate in asking and answering questions from other Stremalit app creators and interact with our team members!
+        
+    Also, check out our Youtube channel for videos on a variety of Streamlit widgets and functions!
+    [Youtube link here](https://www.youtube.com/channel/UC3LD42rjj-Owtxsa6PwGU5Q)
         ''')
 
     with col2: 

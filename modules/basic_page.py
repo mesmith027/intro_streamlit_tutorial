@@ -203,7 +203,7 @@ st.write(type(time))''')
     st.write('There are various ways to display text in Streamlit')
     st.markdown("---")
 
-    text1, mid, text2 = st.beta_columns([20,1,20])
+    buff, text1, mid, text2, buff = st.beta_columns([1,20,0.5,20,1])
 
     # __________Column 1 in Text__________
     with text1: 
@@ -252,7 +252,8 @@ st.write(an_object) #this is a list
     st.write('You can display other information, such as code and data, with specific function calls')
     st.markdown("---")
 
-    other1, mid, other2 = st.beta_columns([20,1,20])
+    buff, other1, mid, other2, buff = st.beta_columns([1,20,0.5,20,1])
+
     with other1: 
         st.subheader("Display Code")
         st.write('You can display code using __st.code__:')
@@ -329,7 +330,8 @@ st.json(json_data)''')
     Hyperlinks simply uses a markdown command, but is included here as an example.''')
     st.markdown("---")
 
-    media1, mid, media2 = st.beta_columns([20,1,20])
+    buff, media1, mid, media2, buff = st.beta_columns([1,20,0.5,20,1])
+
     with media1: 
     
         st.subheader("Image")

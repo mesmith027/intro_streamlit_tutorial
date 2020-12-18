@@ -18,7 +18,7 @@ def advanced(page):
     an expensive computation or just wanting to keep your app user updates on whats happening behind the scenes! :eyes: 
     Lets see what cool things you can do to keep your user occupied while your app is updating.
     """)
-    col1, mid, col2 = st.beta_columns([20,0.5,20])
+    buff, col1, mid, col2, buff = st.beta_columns([1,20,0.5,20,1])
     
     with col1:
         st.subheader('Spinner')
@@ -144,7 +144,7 @@ st.exception(e)
     st.markdown("---")
     st.header("Experimental")
 
-    exp1, mid, exp2 = st.beta_columns([20,0.5,20])
+    buff, exp1, mid, exp2, buff = st.beta_columns([1,20,0.5,20,1])
 
     with exp1: 
         st.subheader("show")
@@ -166,8 +166,14 @@ st.experimental_show(dataframe)
 
     with exp2:
         st.subheader("set query parameters")
+        st.write("""
+Query parameters are a set of values attached to the end of a url as an extension. They are
+used to help define specific content or actions based on the values being passed. You can identify the query parameters 
+because they are the all the values at the end of a URL after the '?'.""")
         st.code('''
         ''')
+
+        st.experimental_set_query_params()
 
         st.subheader("get query parameters")
         st.code('''

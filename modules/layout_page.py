@@ -168,6 +168,10 @@ st.set_page_config(page_title="Streamlit cheat sheet",
         
         st.markdown("---")
         st.subheader("Set the App Name")
+        st.write('''
+This setting allows you to change the name that appers in your browser tab. If you would like to change the name 
+of the app yourself then like click the 'Set the app name' button.
+        ''')
         st.code('''
 usr_name = st.text_input('Pick a page name')
 st.set_page_config(page_title="%s",layout="wide") %usr_name
@@ -186,7 +190,8 @@ st.set_page_config(page_title="%s",layout="wide") %usr_name
         st.subheader("Set the Icon")
         st.write('''
 In the tab what houses this app, there is a default icon of a black and white Streamlit logo. BUT we wanted you to be 
-able to change this to any emoji you wanted to have! To do this, check out the code below:
+able to change this to any emoji you wanted to have! To do this, check out the code below. If you would like to see 
+what the emoji looks like click the 'Change the Emoji' button.
         ''')
         st.code('''
 st.set_page_config(page_title="Streamlit cheat sheet",
@@ -204,8 +209,20 @@ st.set_page_config(page_title="Streamlit cheat sheet",
         st.subheader("Set the Sidebar")
         # initial_sidebar_state='auto'
         st.write('''
+With this setting, you can change the sidebar to be either `expanded`, `collapsed` or `auto` when a user first arrives to 
+your app. If this is not specified then the default is `auto`, which collapses the sidebar on a mobile device and shows it
+ on all other devices. If you would like to set the sifebar like click the 'Change the Sidebar State' button.
+
         ''')
         st.code('''
+st.set_page_config(page_title="Streamlit cheat sheet",
+    layout="wide", initial_sidebar_state="collapsed")
         ''')
 
+        #initial_sidebar_state='collapsed'
+        sidebar_change = st.button("Change the Sidebar State")
+        if sidebar_change: 
+            code_to_save = 'st.set_page_config(page_title="Streamlit cheat sheet",layout="wide", initial_sidebar_state="collapsed")'
+            pkle.dump(code_to_save, open('format.txt', 'wb'))
+            st.experimental_rerun()
     return

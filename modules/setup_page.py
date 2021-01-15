@@ -12,7 +12,7 @@ def setup(page):
     __Fun fact:__ Streamlit got its name [from a typo](https://discuss.streamlit.io/t/why-is-streamlit-called-streamlit/339)! :laughing:
     ''')
 
-    col1, mid, col2 = st.beta_columns([20,0.5,20])
+    buff, col1, mid, col2, buff = st.beta_columns([1,20,0.5,20,1])
     with col1:
         st.image('img/row_2_col_0.png', use_column_width=True)
         st.markdown('''

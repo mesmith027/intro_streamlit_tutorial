@@ -18,7 +18,7 @@ def sidebar():
     ''', unsafe_allow_html=True)
 
     #add streamlit logo
-    st.sidebar.image("img/row_1_col_0.png", width=100, )
+    #st.sidebar.image("img/row_1_col_0.png", width=100 )
 
 
     # return the page choice made by the user

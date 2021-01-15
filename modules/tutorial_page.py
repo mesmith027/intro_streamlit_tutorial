@@ -17,7 +17,7 @@ def tutorial(page):
     # may not need this but going to try and see 
     container = st.beta_container() 
     with container: 
-        trial_code = st_ace('st.balloons()', font_size=15) 
+        trial_code = st_ace('st.balloons()', font_size=15,theme="dawn",language="python") 
         # need to save the work of people who input stuff 
         # checkbox to save work? 
         # button to put it back to start 

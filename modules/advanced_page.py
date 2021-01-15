@@ -7,10 +7,12 @@ def advanced(page):
     '''Advanced Streamlit commands'''
     st.title(page)
     st.write("""
-    Blurb about advanced commands
+    Welcome to the Wizard level of Streamlit :mage: 
+    
+    The functions on this page will give you even more control 
+    and access to unique features, to help guide your aprentice's quest through the trials of your app :motorway:
 
-    - not just for experienced users can be for anyone * dont use word advanced too much
-    - just give you unique features and control over app and function
+    This section is for **anyone** (not just experienced coders), so continue onward to knowledge! :rolling_on_the_floor_laughing: 
     """)
 # ****************** PROGRESS AND STATUS  ******************
     st.header('Progress and Status') 

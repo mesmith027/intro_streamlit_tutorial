@@ -63,10 +63,11 @@ for i in range(1,3): # number of rows in your table! = 2
 # ***************** CONTAINERS SECTION *************************
     st.markdown("---")
     st.header('Containers')
-    st.write('''You may want to create a container for a couple of reasons. These include: 
-    * Creating invisible structure to your app that can help with coding and flow
-    * They allow you to write objects 'out of order' 
-    * They serve as a conceptual block of code''')
+    st.write('''You may want to create a container for a couple of reasons. These include:
+
+- Creating invisible structure to your app that can help with coding and flow
+- They allow you to write objects 'out of order' 
+- They serve as a conceptual block of code''')
     st.subheader('Container using `with`:')
     st.code(''' 
 with st.beta_container():
